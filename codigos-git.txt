@@ -1,0 +1,29 @@
+pwd -> Utilizado para mostrar o caminho do diretório atual.
+cd .. -> Retorna um diretorio.
+cd [nomeDaPasta] -> Responsável por entrar dentro da pasta mencionada.
+mkdir [nomeDoArquivo] -> Utilizado para criar um diretório com o nome mencionado.
+control + L -> Limpa a tela do terminal.
+clear -> Também é responsável por limpar a tela do terminal.
+exit -> Fecha o terminal.
+
+
+git config --global user.name [seuNome] -> Utilizado para criar uma configuração global de seu nome de usuário.
+git config --global user.email [seuEmail] -> Utilizado para criar uma configuração global de seu endereço de e-mail.
+git init -> Utilizado para criar o repositório git dentro do diretório atual.
+git status -> Utilizado para verificar o estado no qual o git se encontra e se possui arquivos a ser commitado.
+git add . -> Utilizado para adicionar todos arquivos presentes no working directory á staging area.
+git add [nomeDoArquivo] -> Utilizado para adicionar o arquivo mencionado á staging area.
+git commit -m "mensagemDeCommit" -> Utilizado para efetuar o commit.
+git log -> Utilizado para mostrar as informações dos commits realizados e suas informações.
+git log --oneline -> Utilizado para mostrar os commits realizados de uma forma mais enxuta e linha por linha.
+git log [nomeDoArquivo] -> Utilizado para retornar as informações sobre os commits realizados no arquivo mencionado.
+git help -> Utilizado para demonstrar uma lista de comandos com suas respectivas descrições.
+git rm --cached [nomeDoArquivo] -> Tira o arquivo selecionado da staging area.
+ls -> Utilizado para exibir o conteúdo normal presente no diretório atual.
+ls -a -> Utilizado para exibir o conteúdo normal e oculto no diretório atual.
+touch [nomeDoArquivo].[extensão] -> Utilizado para criar um arquivo com o nome e a extensão mencionada no código de criação.
+mv [nomeAntigo] [nomeNovo] -> Utilizado para renomear arquivos.
+rm -rf [nomeDoDiretorio] -> Utilizado para excluir todo um diretório.
+
+
+
