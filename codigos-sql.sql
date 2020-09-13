@@ -44,6 +44,9 @@ values(idFuncionario.nextval, 'Astolfo', '08/01/1976', 1244.00, 3);
 insert into funcionario(idFuncionario, nomeFuncionario, nascimentoFuncionario, salarioFuncionario, id_setor)
 values(idFuncionario.nextval, 'Frederico', '12/07/2000', 4607.63, 1);
 
+
+/*---------------------------------------- Select ----------------------------------------*/
+
 -- Selecionando as informações dos setores e funcionários
 select idSetor,nomeSetor,descricaoSetor from setor;
 select nomeFuncionario, nascimento from funcionario where idFuncionario = 1;
@@ -52,6 +55,35 @@ select nomeFuncionario, nascimento from funcionario where idFuncionario = 1;
 select idFuncionario,nomeFuncionario, nascimentoFuncionario, salarioFuncionario
 from funcionario
 order by salarioFuncionario desc;
+
+-- Retorna o salario de funcionários > 3000 e seus respectivso setores.
+select f.nomeFuncionario, s.nomeSetor, f.salarioFuncionario
+from funcionario f
+inner join setor s
+on idSetor = id_setor
+where salarioFuncionario > 3000;
+
+-- Retorna o salario dos funcionários que estejam entre 1200 e 3000 e seus respectivos setores.
+select f.nomeFuncionario, s.nomeSetor, f.salarioFuncionario
+from funcionario FALSE
+inner join setor s
+on idSetor = id_setor
+where salarioFuncionario between 1500 and 3000;
+
+-- Retorna o salario dos funcionários do departamento de TI
+select idFuncionario,nomeFuncionario, nascimentoFuncionario, salarioFuncionario
+from funcionario
+where id_setor = 5;
+
+-- Retorna as informações dos funcionários que começam com a letra V
+select idFuncionario,nomeFuncionario, nascimentoFuncionario, salarioFuncionario
+from funcionario
+where nomeFuncionario like "V%";
+
+-- Retorna os funcionários cujo nascimento tenha sido depois de 01/01/2001.
+select nomeFuncionario, nascimentoFuncionario
+from funcionario
+where nascimentoFuncionario >= '01/01/2001';
 
 /*---------------------------------------- Funções de agregação ----------------------------------------*/
 
