@@ -240,4 +240,14 @@ as
 
 -- Links para tirar dúvidas sobre a sintaxe da view: https://www.devmedia.com.br/criando-visoes-views-no-oracle/1945
 
+/*---------------------------------------- BLOCO ANONIMO ----------------------------------------*/
+
+DECLARE 
+    V_NM_FUNCIONARIO funcionario.nomeFuncionario%Type; -- Responsável por pegar o tipo da variavel: varchar/char/int e etc.
+BEGIN
+    SELECT nomeFuncionario
+    INTO V_NM_FUNCIONARIO
+    FROM funcionario
+    WHERE idFuncionario = 1;
+END;
 
