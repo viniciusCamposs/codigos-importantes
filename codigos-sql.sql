@@ -192,3 +192,38 @@ from funcionario;
 
 select nascimentoFuncionario, EXTRACT(YEAR from nascimentoFuncionario) as "Mês"
 from funcionario;
+
+
+/*---------------------------------------- Trigger ----------------------------------------*/
+
+-- Criação da tabela de bkp
+create table bkpFuncionario(idBpkFuncionario int primary key, nomeFuncionario varchar(50), nascimentoFuncionario date, salarioFuncionario decimal(10,2), idBkp_setor int);
+
+-- Criação da trigger trg_bkpfunc.
+create or replace trigger trg_bkpfunc
+after insert on funcionario -- Antes do funcionário vem o schema do banco, caso não seja passado nenhum valor, o banco tratará o schema default.
+for each row
+begin
+    insert into bkpFuncionario(idBpkFuncionario, nomeFuncionario, nascimentoFuncionario, salarioFuncionario, idBkp_setor)
+    values(:new.idFuncionario, :new.nomeFuncionario, :new.nascimentoFuncionario, :new.salarioFuncionario, :new.id_setor);
+end;
+
+-- Criação da trigger trg_erros. 
+create or replace trigger trg_erros
+before insert on funcionario
+REFERENCING NEW AS NEW OLD AS OLD
+FOR EACH ROW
+BEGIN
+    IF :new.salarioFuncionario > 10000 THEN
+        RAISE_APPLICATION_ERROR(-20001,'Salario deve ser menor');
+    END IF;
+end;
+/
+
+-- Inserção de um novo funcionário para verificar se a trigger esta funcionando.
+insert into funcionario(idFuncionario, nomeFuncionario, nascimentoFuncionario, salarioFuncionario, id_setor)
+values(idFuncionario.nextval, 'Fernando', '10/02/1996', 4845.00, 5);
+
+-- Links para tirar dúvidas sobre a sintaxe de triggers.
+/*http://www.linhadecodigo.com.br/artigo/2821/trigger-oracle-basico.aspx
+https://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_7004.htm*/
