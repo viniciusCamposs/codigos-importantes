@@ -227,3 +227,17 @@ values(idFuncionario.nextval, 'Fernando', '10/02/1996', 4845.00, 5);
 -- Links para tirar dúvidas sobre a sintaxe de triggers.
 /*http://www.linhadecodigo.com.br/artigo/2821/trigger-oracle-basico.aspx
 https://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_7004.htm*/
+
+
+/*---------------------------------------- View ----------------------------------------*/
+
+create or replace view vFullRelatorio 
+as
+    select f.idFuncionario, f.nomeFuncionario, f.nascimentoFuncionario, f.salarioFuncionario, f.id_setor, s.nomeSetor, s.descricaoSetor
+    from funcionario f
+    inner join setor s
+    on s.idSetor = f.id_setor;
+
+-- Links para tirar dúvidas sobre a sintaxe da view: https://www.devmedia.com.br/criando-visoes-views-no-oracle/1945
+
+
