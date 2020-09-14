@@ -251,3 +251,27 @@ BEGIN
     WHERE idFuncionario = 1;
 END;
 
+/*---------------------------------------- PROCEDURE ----------------------------------------*/
+
+-- Criação da procedure.
+CREATE OR REPLACE PROCEDURE SP_FUNC(V_NM_FUNCIONARIO VARCHAR2)
+IS -- Declaração das variaveis.
+    V_NM_FUNCIONARIO funcionario.nomeFuncionario%Type;
+BEGIN
+    SELECT nomeFuncionario
+    INTO V_NM_FUNCIONARIO
+    FROM funcionario
+    WHERE idFuncionario = 1;
+END;
+
+-- Métodos para chamar a procedure.
+EXECUTE SP_FUNC; -- Utilizando um execute.
+
+BEGIN -- Utilizando um bloco pl/sql.
+    SP_FUNC;
+END;
+
+
+-- Como apagar uma procedure
+
+DROP PROCEDURE SP_FUNC;
