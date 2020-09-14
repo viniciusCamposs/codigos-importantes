@@ -126,6 +126,10 @@ from funcionario
 group by salarioFuncionario
 having count(idFuncionario)>1;
 
+/*---------------------------------------- Utilizando o comando Update ----------------------------------------*/
+
+update funcionario set nomeFuncionario = 'Campos' where idFuncionario = 1;
+
 /*---------------------------------------- Trabalhando um pouco com datas ----------------------------------------*/
 
 -- Utilizando a função TO_CHAR(variavel, 'modeloDeData') para personalizar o modelo da data.
