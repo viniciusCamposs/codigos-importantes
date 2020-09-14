@@ -126,3 +126,69 @@ from funcionario
 group by salarioFuncionario
 having count(idFuncionario)>1;
 
+/*---------------------------------------- Trabalhando um pouco com datas ----------------------------------------*/
+
+-- Utilizando a função TO_CHAR(variavel, 'modeloDeData') para personalizar o modelo da data.
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, 'MM/DD/YY') as "Data"
+from funcionario;
+
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, "YY/MM/DD") as "Data"
+from funcionario;
+
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, 'DD/MM/YY') as "Data" 
+from funcionario;
+
+-- Retorna o dia e o mês por escrito.
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, 'Day Month, YYYY') as "Data" --CASE SENSITIVE
+from funcionario;
+
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, 'Month, DD/YYYY') as "Data" 
+from funcionario;
+
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, 'Month Day Year') as "Data" 
+from funcionario;
+
+select nomeFuncionario as "Funcionario", TO_CHAR(nascimentoFuncionario, 'DD, Month, YYYY') as "Data" 
+from funcionario;
+
+-- Retorna o nome do dia/mês/ano
+
+select TO_CHAR(nascimentoFuncionario, 'Day') as "Dia do nascimento"
+from funcionario;
+
+select TO_CHAR(nascimentoFuncionario, 'Month') as "Mês de nascimento"
+from funcionario;
+
+select TO_CHAR(nascimentoFuncionario, 'Year') as "Ano de nascimento"
+from funcionario;
+
+-- Coleta a data atual e trás a data do proximo dia mencionado.
+
+select SYSDATE, NEXT_DAY(SYSDATE, 'Domingo') as "Proximo domingo" --SYSDATE retorna a data atual do sistema.
+from DUAL;
+
+-- Adiciona uma quantidade de meses a data atual.
+
+select nascimentoFuncionario, ADD_MONTH(7,nascimentoFuncionario) --Neste caso foi adicionado 7 meses a data atual.
+from funcionario;
+
+-- Retorna o ultimo dia do mês.
+
+select nascimentoFuncionario, LAST_DAY(nascimentoFuncionario) as "ULTIMO DIA DO MES"
+from funcionario;
+
+-- Retorna a idade do funcionário com base na sua data de nascimento
+
+select nascimentoFuncionario, TRUNC(MONTHS_BETWEEN(SYSDATE, nascimentoFuncionario)/12) as "Idade"
+from funcionario;
+
+-- Extrai o dia/mês/ano 
+
+select nascimentoFuncionario, EXTRACT(DAY from nascimentoFuncionario) as "Mês"
+from funcionario;
+
+select nascimentoFuncionario, EXTRACT(MONTH from nascimentoFuncionario) as "Mês"
+from funcionario;
+
+select nascimentoFuncionario, EXTRACT(YEAR from nascimentoFuncionario) as "Mês"
+from funcionario;
